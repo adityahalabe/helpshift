@@ -1,3 +1,5 @@
+package inputHandlers
+
 import config.Dependencies._
 import utilities.ApplicationConstants._
 

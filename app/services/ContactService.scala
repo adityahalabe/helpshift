@@ -19,11 +19,6 @@ class ContactService(contactDataMapper: ContactDataMapper) {
     }
   }
 
-  def searchContact(input : String) : List[Contact] = {
-
-    val contacts = contactDataMapper.searchContacts(input)
-
-    contacts.sortWith(  (x : Contact,y : Contact) => x.fullName.equals(input))
-  }
+  def searchContact(input : String) : List[String] = contactDataMapper.searchContacts(input)
 
 }

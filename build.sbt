@@ -13,3 +13,5 @@ libraryDependencies ++= Seq(
 )
 libraryDependencies += specs2 % Test
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
+
+libraryDependencies += "org.apache.commons" % "commons-collections4" % "4.1"

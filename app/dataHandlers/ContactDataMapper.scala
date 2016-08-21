@@ -1,29 +1,21 @@
 package dataHandlers
 
 import model.Contact
-
-import scala.collection.mutable.ListBuffer
+import org.apache.commons.collections4.trie.PatriciaTrie
+import scala.collection.JavaConverters._
 
 /**
   * Created by ahm2320 on 8/13/16.
   */
 class ContactDataMapper {
 
-  var contacts = new ListBuffer[Contact]
+  val trie = new PatriciaTrie[String]()
 
-  def isContactExits(contact: Contact) = {
-    if(contacts.contains(contact))
-      true
-    else
-      false
-  }
+  def isContactExits(contact: Contact) = trie.containsKey(contact.fullName)
 
   def saveContact(contact: Contact) : Boolean = {
-    contacts += contact
+    trie.put(contact.fullName,contact.fullName)
     true
   }
-
-  def searchContacts(input:String) = {
-    contacts.toList.par.filter(_.fullName.toLowerCase.contains(input.toLowerCase)).toList
-  }
+  def searchContacts(input:String) = trie.prefixMap(input).values().asScala.toList
 }

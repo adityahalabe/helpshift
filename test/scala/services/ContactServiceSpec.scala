@@ -39,7 +39,7 @@ class ContactServiceSpec extends Specification with Mockito {
     }
 
     "search contact and rank exact match higher" in new Fixture {
-      val outputBeforeRank = List(Contact("aditya","Halabe"),Contact("adi",""))
+      val outputBeforeRank = List("aditya Halabe","adi")
       contactDataMapper.searchContacts("adi") returns(outputBeforeRank)
       val outputAfterRank = List(Contact("adi",""),Contact("aditya","Halabe"))
       contactService.searchContact("adi") mustEqual(outputAfterRank)

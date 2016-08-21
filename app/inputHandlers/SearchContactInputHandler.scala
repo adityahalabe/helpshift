@@ -14,7 +14,7 @@ class SearchContactInputHandler(contactService: ContactService) {
     }else{
       println("Matching contacts Found  : ")
       for(contact <- searchedContacts){
-        println(contact.firstName + " " + contact.lastName)
+        println(contact)
       }
     }
     Application.readInput
